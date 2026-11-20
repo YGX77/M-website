@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Amela 💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0d0d10;
+    --card: #17171c;
+    --pink: #ff4fa3;
+    --pink-soft: #ffc9e3;
+    --pink-deep: #c2185b;
+    --text: #fff0f7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(circle at 20% 0%, #2a0f20 0%, var(--black) 55%) fixed;
+    color: var(--text);
+    font-family: "Quicksand", system-ui, sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  h1, h2, .script { font-family: "Pacifico", cursive; font-weight: 400; }
+  section { max-width: 640px; margin: 0 auto; padding: 56px 20px; text-align: center; }
+
+  /* floating hearts */
+  .heart-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .heart {
+    position: absolute; bottom: -40px;
+    animation: floatUp linear forwards;
+    opacity: .8;
+  }
+  @keyframes floatUp {
+    to { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+  }
+  main { position: relative; z-index: 1; }
+
+  /* hero */
+  .hero h1 { font-size: clamp(2.2rem, 9vw, 3.4rem); color: var(--pink); text-shadow: 0 0 24px rgba(255,79,163,.45); }
+  .hero p { margin-top: 10px; color: var(--pink-soft); }
+  .envelope {
+    margin-top: 36px; background: none; border: none; cursor: pointer;
+    font-size: 6rem; line-height: 1;
+    animation: bob 2.2s ease-in-out infinite;
+    transition: transform .5s, opacity .5s;
+  }
+  .envelope:focus-visible { outline: 3px dashed var(--pink); outline-offset: 8px; border-radius: 12px; }
+  .envelope.gone { transform: scale(.2) rotate(-20deg); opacity: 0; pointer-events: none; }
+  @keyframes bob { 50% { transform: translateY(-12px) rotate(-4deg); } }
+  .tap { margin-top: 8px; font-size: .95rem; color: var(--pink-soft); }
+
+  /* letter */
+  .letter-wrap { display: none; }
+  .letter-wrap.show { display: block; animation: pop .6s ease both; }
+  @keyframes pop { from { opacity: 0; transform: translateY(30px) scale(.95); } }
+  .letter {
+    background: var(--card);
+    border: 2px solid var(--pink);
+    border-radius: 22px;
+    padding: 34px 26px;
+    text-align: left;
+    box-shadow: 0 0 0 6px rgba(255,79,163,.12), 0 20px 50px rgba(0,0,0,.5);
+  }
+  .letter .line {
+    opacity: 0; transform: translateY(10px);
+    transition: opacity .8s, transform .8s;
+    margin-bottom: 14px; font-size: 1.1rem;
+  }
+  .letter .line.in { opacity: 1; transform: none; }
+  .letter .sign { font-family: "Pacifico", cursive; color: var(--pink); font-size: 1.4rem; margin-top: 22px; }
+
+  /* photos */
+  h2 { color: var(--pink); font-size: 1.9rem; margin-bottom: 8px; }
+  .sub { color: var(--pink-soft); margin-bottom: 30px; }
+  .photos { display: flex; flex-wrap: wrap; gap: 26px; justify-content: center; }
+  .polaroid {
+    background: #fff; color: #222; padding: 12px 12px 14px; width: 250px;
+    border-radius: 6px; box-shadow: 0 12px 30px rgba(0,0,0,.55);
+    transition: transform .3s;
+  }
+  .polaroid:nth-child(odd) { transform: rotate(-4deg); }
+  .polaroid:nth-child(even) { transform: rotate(3.5deg); }
+  .polaroid:hover { transform: rotate(0) scale(1.05); }
+  .polaroid .frame {
+    aspect-ratio: 3 / 4; background: var(--black); border-radius: 3px; overflow: hidden;
+    display: grid; place-items: center;
+  }
+  .polaroid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .polaroid.missing .frame {
+    background: repeating-linear-gradient(45deg, #ffe1ef, #ffe1ef 12px, #ffc9e3 12px, #ffc9e3 24px);
+    color: var(--pink-deep); font-size: .85rem; padding: 14px;
+  }
+  .polaroid.missing img { display: none; }
+  .polaroid figcaption { margin-top: 10px; font-family: "Pacifico", cursive; font-size: 1.05rem; color: var(--pink-deep); }
+
+  /* song */
+  .song {
+    display: flex; align-items: center; gap: 16px; text-align: left;
+    background: var(--card); border: 2px dashed var(--pink); border-radius: 18px; padding: 18px;
+  }
+  .song .disc { font-size: 2.6rem; animation: spin 6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .song a {
+    display: inline-block; margin-top: 8px; padding: 8px 16px;
+    background: var(--pink); color: var(--black); font-weight: 700; text-decoration: none; border-radius: 999px;
+  }
+  .song a:hover { background: var(--pink-soft); }
+
+  /* question */
+  .btns { position: relative; height: 130px; margin-top: 24px; }
+  .btn {
+    font: inherit; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer;
+    padding: 12px 28px; border-radius: 999px;
+  }
+  .yes { background: var(--pink); color: var(--black); }
+  .yes:hover { transform: scale(1.1); }
+  .no { background: #2b2b33; color: var(--text); position: absolute; left: calc(50% + 70px); top: 0; transition: left .25s, top .25s; }
+  .yes { position: absolute; left: calc(50% - 110px); top: 0; transition: transform .2s; }
+  .answer { display: none; margin-top: 10px; font-family: "Pacifico", cursive; font-size: 1.7rem; color: var(--pink); }
+  .answer.show { display: block; animation: pop .5s ease both; }
+
+  footer { padding: 30px 20px 60px; text-align: center; color: var(--pink-soft); position: relative; z-index: 1; }
+  footer .script { color: var(--pink); font-size: 1.5rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .envelope, .song .disc { animation: none; }
+    .heart { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="heart-layer" id="hearts" aria-hidden="true"></div>
+
+<main>
+  <!-- HERO + ENVELOPE -->
+  <section class="hero" id="top">
+    <h1>Hey Amela 💗</h1>
+    <p>Someone left you a little something.</p>
+    <button class="envelope" id="envelope" aria-label="Open the letter">💌</button>
+    <p class="tap" id="tap">tap the envelope</p>
+
+    <!-- LETTER: edit the lines below to change the message -->
+    <div class="letter-wrap" id="letterWrap">
+      <div class="letter" id="letter">
+        <p class="line">Hey Amela 🖤</p>
+        <p class="line">I made you a tiny website. A text felt too small.</p>
+        <p class="line">You make my days softer and my jokes funnier.</p>
+        <p class="line">You look good in every filter. Even the dog one. 🐶</p>
+        <p class="line">Yes, the glasses and the mustache too. 🕶️</p>
+        <p class="line">Thank you for being you, zemra ime.</p>
+        <p class="line">I hope this page makes you smile at least once.</p>
+        <p class="line">Të dua shumë. 💗</p>
+        <p class="line sign">— yours</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOS: put your image files in the photos folder -->
+  <section id="photos">
+    <h2>Our little gallery</h2>
+    <p class="sub">Filters on. Standards off.</p>
+    <div class="photos">
+      <figure class="polaroid">
+        <div class="frame">
+          <img src="photos/amela1.png" alt="Amela with the dog filter and glasses" onerror="this.closest('.polaroid').classList.add('missing'); this.parentNode.append('Add photos/amela1.png')">
+        </div>
+        <figcaption>dog filter era 🐶</figcaption>
+      </figure>
+      <figure class="polaroid">
+        <div class="frame">
+          <img src="photos/amela2.png" alt="Amela with glasses and a mustache sticker" onerror="this.closest('.polaroid').classList.add('missing'); this.parentNode.append('Add photos/amela2.png')">
+        </div>
+        <figcaption>2016 type shi 🕶️</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SONG: change the title and the link -->
+  <section id="song">
+    <h2>Our song</h2>
+    <p class="sub">Press play. Think of me.</p>
+    <div class="song">
+      <div class="disc">💿</div>
+      <div>
+        <strong>Babydoll</strong>
+        <p>This one sounds like you.</p>
+        <a href="https://www.youtube.com/results?search_query=babydoll" target="_blank" rel="noopener">Play it ▶</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUESTION -->
+  <section id="question">
+    <h2>One last question</h2>
+    <p class="sub">Do you still like me?</p>
+    <div class="btns" id="btns">
+      <button class="btn yes" id="yes">Yes 💗</button>
+      <button class="btn no" id="no">No</button>
+    </div>
+    <p class="answer" id="answer">Good. Me too. Të dua. 🖤</p>
+  </section>
+</main>
+
+<footer>
+  <p class="script">Made for Amela</p>
+  <p>by someone who thinks about you a lot.</p>
+</footer>
+
+<script>
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Floating hearts
+  var layer = document.getElementById("hearts");
+  var icons = ["💗", "🖤", "💖", "🎀"];
+  function spawnHeart() {
+    if (reduce) return;
+    var h = document.createElement("span");
+    h.className = "heart";
+    h.textContent = icons[Math.floor(Math.random() * icons.length)];
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = 14 + Math.random() * 22 + "px";
+    h.style.animationDuration = 7 + Math.random() * 7 + "s";
+    layer.appendChild(h);
+    setTimeout(function () { h.remove(); }, 15000);
+  }
+  setInterval(spawnHeart, 900);
+
+  // Open the letter
+  var envelope = document.getElementById("envelope");
+  var wrap = document.getElementById("letterWrap");
+  var tap = document.getElementById("tap");
+  var opened = false;
+  envelope.addEventListener("click", function () {
+    if (opened) return;
+    opened = true;
+    envelope.classList.add("gone");
+    tap.style.display = "none";
+    setTimeout(function () {
+      envelope.style.display = "none";
+      wrap.classList.add("show");
+      var lines = document.querySelectorAll("#letter .line");
+      lines.forEach(function (line, i) {
+        setTimeout(function () { line.classList.add("in"); }, reduce ? 0 : 700 + i * 1100);
+      });
+    }, reduce ? 0 : 450);
+  });
+
+  // Yes / No
+  var no = document.getElementById("no");
+  var yes = document.getElementById("yes");
+  var box = document.getElementById("btns");
+  function dodge() {
+    var maxX = box.clientWidth - no.offsetWidth;
+    var maxY = box.clientHeight - no.offsetHeight;
+    no.style.left = Math.max(0, Math.random() * maxX) + "px";
+    no.style.top = Math.max(0, Math.random() * maxY) + "px";
+  }
+  no.addEventListener("mouseenter", dodge);
+  no.addEventListener("touchstart", function (e) { e.preventDefault(); dodge(); }, { passive: false });
+  no.addEventListener("click", dodge);
+  yes.addEventListener("click", function () {
+    document.getElementById("answer").classList.add("show");
+    no.style.display = "none";
+    for (var i = 0; i < 30; i++) setTimeout(spawnHeart, i * 80);
+  });
+</script>
+</body>
+</html>
