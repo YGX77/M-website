@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#140a30">
+<title>To Amela ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #f6ecff;
+    --lav: #e9d5ff;
+    --pink: #f0abfc;
+    --glass: rgba(255, 255, 255, .07);
+    --edge: rgba(216, 180, 254, .32);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #140a30;
+    color: var(--ink);
+    font-family: "Quicksand", system-ui, sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .ic { width: 1.25em; height: 1.25em; fill: currentColor; flex: none; }
+
+  /* ---------- background ---------- */
+  .sky {
+    position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(60% 40% at 8% 6%, rgba(160, 90, 220, .35), transparent 60%),
+      radial-gradient(50% 35% at 95% 4%, rgba(150, 90, 210, .30), transparent 60%),
+      radial-gradient(70% 35% at 50% 100%, rgba(236, 120, 200, .35), transparent 70%),
+      linear-gradient(180deg, #140a30 0%, #27124d 40%, #4a2272 75%, #2d1553 100%);
+  }
+  .stars { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+  .star {
+    position: absolute; border-radius: 50%; background: #fff;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  @keyframes twinkle { 50% { opacity: .15; } }
+  .scene {
+    position: fixed; left: 0; right: 0; bottom: 0; width: 100%;
+    height: clamp(170px, 30vh, 320px);
+    z-index: 0; pointer-events: none;
+  }
+  .fx { position: fixed; inset: 0; z-index: 6; pointer-events: none; overflow: hidden; }
+  .petal {
+    position: absolute; top: 0;
+    width: 13px; height: 17px;
+    background: radial-gradient(circle at 30% 30%, #f7c8ff, #b86adf);
+    border-radius: 80% 0 80% 0;
+    opacity: .75;
+    animation: fall linear forwards;
+  }
+  @keyframes fall {
+    0%   { transform: translate(0, -8vh) rotate(0deg); }
+    50%  { transform: translate(var(--dx), 55vh) rotate(200deg); }
+    100% { transform: translate(0, 112vh) rotate(380deg); opacity: 0; }
+  }
+  .rise {
+    position: absolute; bottom: -40px; color: #f5b8ff;
+    text-shadow: 0 0 10px rgba(240, 171, 252, .8);
+    animation: rise linear forwards;
+  }
+  @keyframes rise { to { transform: translateY(-115vh) rotate(25deg); opacity: 0; } }
+  .gh {
+    position: fixed; z-index: 1; color: #e7b6ff; pointer-events: none;
+    filter: drop-shadow(0 0 8px rgba(224, 160, 255, .9));
+    animation: drift 5s ease-in-out infinite;
+  }
+  .gh .ic { width: 100%; height: 100%; fill: none; stroke: currentColor; }
+  @keyframes drift { 50% { transform: translateY(-10px) rotate(6deg); } }
+
+  /* ---------- header ---------- */
+  .top {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    padding: 14px 28px;
+    background: rgba(20, 10, 48, .45);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(216, 180, 254, .18);
+  }
+  .brand {
+    font-family: "Great Vibes", cursive; font-size: 2.6rem; line-height: 1;
+    color: var(--ink); text-decoration: none;
+    text-shadow: 0 0 14px rgba(216, 164, 255, .8);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .brand .ic { fill: none; stroke: currentColor; width: .8em; height: .8em; }
+  .pill {
+    display: flex; gap: 4px; padding: 6px;
+    background: var(--glass); border: 1px solid var(--edge); border-radius: 999px;
+  }
+  .pill a {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: 999px;
+    color: var(--lav); text-decoration: none; font-size: .98rem;
+    transition: background .25s;
+  }
+  .pill a:hover { background: rgba(255, 255, 255, .08); }
+  .pill a.on { background: rgba(255, 255, 255, .14); color: #fff; box-shadow: inset 0 0 0 1px var(--edge); }
+
+  /* ---------- hero ---------- */
+  main { position: relative; z-index: 2; padding-bottom: 40px; }
+  [id] { scroll-margin-top: 90px; }
+  .head { text-align: center; padding: 38px 20px 22px; }
+  h1 {
+    font-family: "Great Vibes", cursive; font-weight: 400;
+    font-size: clamp(3.2rem, 11vw, 5.2rem); line-height: 1.1;
+    text-shadow: 0 0 12px #e0aaff, 0 0 34px rgba(190, 110, 255, .7);
+  }
+  h1 .ic { fill: none; stroke: currentColor; width: .6em; height: .6em; }
+  .sub {
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+    font-size: 1.35rem; color: var(--lav); margin-top: 6px;
+  }
+  .divider {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin-top: 14px; color: var(--lav);
+  }
+  .divider span { width: 70px; height: 1px; background: rgba(233, 213, 255, .45); }
+  .divider .ic { fill: none; stroke: currentColor; width: 20px; height: 20px; }
+
+  .stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 680px) minmax(0, 1fr);
+    gap: 24px; max-width: 1280px; margin: 0 auto; padding: 0 24px;
+    align-items: start;
+  }
+  .center { display: grid; gap: 26px; }
+
+  .card {
+    background: var(--glass);
+    border: 1px solid var(--edge);
+    border-radius: 24px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 40px rgba(10, 4, 30, .35);
+  }
+
+  /* letter */
+  .letter { padding: 30px 36px 26px; }
+  .letter p { margin-bottom: 18px; }
+  .letter .to { font-size: 1.2rem; }
+  .letter .body { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; line-height: 1.5; font-weight: 500; }
+  .letter .sign {
+    font-family: "Great Vibes", cursive; font-size: 2rem; text-align: right;
+    margin: 0; color: var(--lav);
+  }
+  .letter .sign .ic { fill: none; stroke: currentColor; width: .6em; height: .6em; }
+  .reveal { opacity: 0; transform: translateY(10px); transition: opacity .9s, transform .9s; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* polaroids */
+  .polaroid {
+    position: relative; width: min(100%, 260px);
+    background: #eadcf3; padding: 12px 12px 8px; border-radius: 4px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .5);
+    justify-self: center; margin-top: 34px;
+    transition: transform .35s;
+  }
+  .polaroid.left  { transform: rotate(-8deg); }
+  .polaroid.right { transform: rotate(7deg); }
+  .polaroid:hover { transform: rotate(0) scale(1.04); }
+  .polaroid::before {
+    content: ""; position: absolute; top: -15px; left: 50%;
+    width: 92px; height: 28px; transform: translateX(-50%) rotate(-4deg);
+    background: rgba(255, 255, 255, .38); border: 1px solid rgba(255, 255, 255, .3);
+  }
+  .polaroid .frame {
+    aspect-ratio: 1 / 1.1; overflow: hidden; background: #2a1747;
+    display: grid; place-items: center; text-align: center;
+    color: #cdb4ee; font-size: .85rem; padding: 10px;
+  }
+  .polaroid img { width: 100%; height: 100%; object-fit: cover; object-position: center 38%; display: block; }
+  .polaroid.missing img { display: none; }
+  .polaroid .hrt { display: block; margin: 8px auto 2px; width: 28px; height: 28px; color: #5b3a8c; fill: none; stroke: currentColor; }
+
+  /* player */
+  .player { padding: 18px 24px 20px; }
+  .player .row1 { display: flex; align-items: flex-start; gap: 14px; }
+  .player .note { width: 34px; height: 34px; color: var(--lav); margin-top: 2px; }
+  .player .meta { flex: 1; min-width: 0; }
+  .player .meta strong { display: block; font-size: 1.2rem; font-weight: 600; }
+  .player .meta span { color: #cdb4ee; font-size: .95rem; }
+  .like { background: none; border: none; color: var(--lav); cursor: pointer; padding: 4px; }
+  .like .ic { width: 28px; height: 28px; fill: none; stroke: currentColor; transition: transform .25s; }
+  .like.liked .ic { fill: #f0abfc; stroke: #f0abfc; transform: scale(1.15); }
+  .player .row2 { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+  .play {
+    width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
+    background: var(--lav); color: #3b1b66; display: grid; place-items: center; flex: none;
+    transition: transform .2s;
+  }
+  .play:hover { transform: scale(1.08); }
+  .play .ic { width: 22px; height: 22px; }
+  .time { font-size: .9rem; color: #d9c2f5; white-space: nowrap; }
+  .mute { background: none; border: none; color: var(--lav); cursor: pointer; display: grid; place-items: center; }
+  .mute.off { opacity: .45; }
+  input[type=range] {
+    -webkit-appearance: none; appearance: none; height: 4px; border-radius: 4px; outline: none; cursor: pointer;
+    background: linear-gradient(90deg, var(--lav) var(--p, 0%), rgba(255, 255, 255, .2) var(--p, 0%));
+  }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: var(--lav); }
+  input[type=range]::-moz-range-thumb { width: 13px; height: 13px; border: none; border-radius: 50%; background: var(--lav); }
+  #seek { flex: 1; min-width: 60px; }
+  #vol { width: 80px; }
+
+  .forever {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    max-width: 760px; margin: 42px auto 0; padding: 0 24px;
+    font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.45rem; color: var(--lav);
+  }
+  .forever::before, .forever::after { content: ""; flex: 1; height: 1px; background: rgba(233, 213, 255, .35); }
+
+  /* ---------- for you ---------- */
+  #foryou { position: relative; z-index: 2; max-width: 620px; margin: 0 auto; padding: 150px 20px 280px; text-align: center; }
+  #foryou .card { padding: 34px 24px 30px; }
+  #foryou h2 {
+    font-family: "Great Vibes", cursive; font-weight: 400; font-size: 3rem; line-height: 1.1;
+    text-shadow: 0 0 14px rgba(216, 164, 255, .8);
+  }
+  #foryou p.q { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; margin-top: 6px; color: var(--lav); }
+  .btns { position: relative; height: 120px; margin-top: 18px; }
+  .btn { font: inherit; font-weight: 600; font-size: 1.1rem; border: none; cursor: pointer; padding: 12px 30px; border-radius: 999px; position: absolute; top: 0; }
+  .yes { background: var(--lav); color: #3b1b66; left: calc(50% - 115px); transition: transform .2s; }
+  .yes:hover { transform: scale(1.1); }
+  .no { background: rgba(255, 255, 255, .12); color: var(--ink); border: 1px solid var(--edge); left: calc(50% + 40px); transition: left .25s, top .25s; }
+  .answer { display: none; font-family: "Great Vibes", cursive; font-size: 2.2rem; color: #f5c8ff; text-shadow: 0 0 14px rgba(216, 164, 255, .8); }
+  .answer.show { display: block; animation: pop .6s ease both; }
+  @keyframes pop { from { opacity: 0; transform: scale(.85); } }
+
+  /* ---------- small screens ---------- */
+  @media (max-width: 900px) {
+    .stage { grid-template-columns: 1fr 1fr; gap: 14px; padding: 0 16px; }
+    .center { grid-column: 1 / -1; order: 2; }
+    .polaroid { order: 1; width: min(100%, 190px); margin-top: 22px; }
+    .letter { padding: 24px 22px 20px; }
+    .letter .body { font-size: 1.35rem; }
+  }
+  @media (max-width: 620px) {
+    .top { padding: 10px 14px; justify-content: center; }
+    .pill a span { display: none; }
+    .pill a { padding: 10px 16px; }
+    #vol { display: none; }
+    .player .row2 { flex-wrap: wrap; }
+    #seek { order: 5; flex-basis: 100%; }
+    .time { margin-left: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .star, .gh { animation: none; }
+    .petal, .rise { display: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+<noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<!-- icon sprites -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-heart-o" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.8 6.6 4.8c2 0 3.6 1.1 5.4 3.2 1.8-2.1 3.4-3.2 5.4-3.2 3.6 0 5.7 3.5 4.2 7C19.5 16.4 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.8 6.6 4.8c2 0 3.6 1.1 5.4 3.2 1.8-2.1 3.4-3.2 5.4-3.2 3.6 0 5.7 3.5 4.2 7C19.5 16.4 12 21 12 21z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 3l9 8.5V21a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M2 6.5A1.5 1.5 0 0 1 3.5 5h17A1.5 1.5 0 0 1 22 6.5v.4l-10 6.6L2 6.9zM2 9.3v8.2A1.5 1.5 0 0 0 3.5 19h17a1.5 1.5 0 0 0 1.5-1.5V9.3l-10 6.6z"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M8 4.2 20 2v12.6a3.3 3.3 0 1 1-2-3V5.4L10 6.9v10.6a3.3 3.3 0 1 1-2-3z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></symbol>
+    <symbol id="i-vol" viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="sky"></div>
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<!-- glowing outline hearts -->
+<span class="gh" style="left:22%; top:15%; width:34px; height:34px;" aria-hidden="true"><svg class="ic"><use href="#i-heart-o"/></svg></span>
+<span class="gh" style="right:4%; top:21%; width:28px; height:28px; animation-delay:1s;" aria-hidden="true"><svg class="ic"><use href="#i-heart-o"/></svg></span>
+<span class="gh" style="right:10%; top:72%; width:42px; height:42px; animation-delay:2s;" aria-hidden="true"><svg class="ic"><use href="#i-heart-o"/></svg></span>
+
+<!-- bottom scene: hills, skyline, plants -->
+<svg class="scene" viewBox="0 0 1536 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <path id="leaf" d="M0 0C8-16 30-18 44 0C30 18 8 16 0 0Z"/>
+    <g id="branch">
+      <path d="M0 0C30-40 50-90 60-160" fill="none" stroke="currentColor" stroke-width="5"/>
+      <use href="#leaf" transform="translate(6,-14) rotate(-35)"/>
+      <use href="#leaf" transform="translate(10,-14) rotate(20)"/>
+      <use href="#leaf" transform="translate(22,-45) rotate(-45)"/>
+      <use href="#leaf" transform="translate(26,-45) rotate(15)"/>
+      <use href="#leaf" transform="translate(36,-78) rotate(-50)"/>
+      <use href="#leaf" transform="translate(40,-78) rotate(10)"/>
+      <use href="#leaf" transform="translate(48,-112) rotate(-60)"/>
+      <use href="#leaf" transform="translate(52,-112) rotate(0)"/>
+      <use href="#leaf" transform="translate(58,-150) rotate(-80)"/>
+      <use href="#leaf" transform="translate(60,-150) rotate(-10)"/>
+    </g>
+  </defs>
+  <path d="M0 320V235C200 212 380 252 600 238S980 218 1180 234 1420 226 1536 216V320Z" fill="#1d1040"/>
+  <g fill="#150b2e">
+    <rect x="1030" y="262" width="34" height="58"/><rect x="1070" y="248" width="30" height="72"/>
+    <rect x="1106" y="268" width="40" height="52"/><rect x="1152" y="254" width="28" height="66"/>
+    <rect x="1186" y="270" width="36" height="50"/><rect x="1228" y="258" width="30" height="62"/>
+    <rect x="560" y="268" width="30" height="52"/><rect x="598" y="258" width="26" height="62"/>
+    <rect x="630" y="272" width="36" height="48"/><rect x="760" y="270" width="32" height="50"/>
+  </g>
+  <g fill="#ffd08a" opacity=".85">
+    <rect x="1038" y="272" width="5" height="6"/><rect x="1050" y="286" width="5" height="6"/>
+    <rect x="1078" y="260" width="5" height="6"/><rect x="1088" y="280" width="5" height="6"/>
+    <rect x="1118" y="278" width="5" height="6"/><rect x="1160" y="266" width="5" height="6"/>
+    <rect x="1196" y="282" width="5" height="6"/><rect x="1238" y="270" width="5" height="6"/>
+    <rect x="1244" y="292" width="5" height="6"/><rect x="568" y="280" width="5" height="6"/>
+    <rect x="606" y="270" width="5" height="6"/><rect x="642" y="284" width="5" height="6"/>
+    <rect x="770" y="282" width="5" height="6"/>
+  </g>
+  <g fill="#0f0722" color="#0f0722">
+    <use href="#branch" transform="translate(30,330) scale(1.7)"/>
+    <use href="#branch" transform="translate(110,330) scale(1.2) rotate(-10)"/>
+    <use href="#branch" transform="translate(-10,330) scale(1.4) rotate(14)"/>
+    <use href="#branch" transform="translate(190,330) scale(.9) rotate(-18)"/>
+    <use href="#branch" transform="translate(1506,330) scale(-1.7,1.7)"/>
+    <use href="#branch" transform="translate(1426,330) scale(-1.2,1.2) rotate(-10)"/>
+    <use href="#branch" transform="translate(1546,330) scale(-1.4,1.4) rotate(14)"/>
+    <use href="#branch" transform="translate(1346,330) scale(-.9,.9) rotate(-18)"/>
+  </g>
+</svg>
+
+<!-- falling petals and rising hearts -->
+<div class="fx" id="fx" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="brand" href="#home">Amela <svg class="ic"><use href="#i-heart-o"/></svg></a>
+  <nav class="pill" aria-label="Page sections">
+    <a href="#home" class="on"><svg class="ic"><use href="#i-home"/></svg><span>Home</span></a>
+    <a href="#letter"><svg class="ic"><use href="#i-mail"/></svg><span>Letter</span></a>
+    <a href="#song"><svg class="ic"><use href="#i-note"/></svg><span>Song</span></a>
+    <a href="#foryou"><svg class="ic"><use href="#i-heart"/></svg><span>For You</span></a>
+  </nav>
+</header>
+
+<main id="home">
+  <div class="head">
+    <h1>To Amela <svg class="ic"><use href="#i-heart-o"/></svg></h1>
+    <p class="sub">A little letter, from me to you...</p>
+    <div class="divider"><span></span><svg class="ic"><use href="#i-heart-o"/></svg><span></span></div>
+  </div>
+
+  <div class="stage">
+    <!-- PHOTO 1: change the file in the photos folder -->
+    <figure class="polaroid left">
+      <div class="frame">
+        <img src="photos/amela1.png" alt="Amela with the dog filter and glasses"
+             onerror="this.closest('.polaroid').classList.add('missing'); this.parentNode.append('Add photos/amela1.png')">
+      </div>
+      <svg class="hrt"><use href="#i-heart-o"/></svg>
+    </figure>
+
+    <div class="center">
+      <!-- LETTER: edit the text below -->
+      <article class="card letter" id="letter">
+        <p class="to reveal">Amela,</p>
+        <p class="body reveal">You make my life brighter, my days happier,<br>and my heart feel at home.<br>I just wanted you to know how much you mean to me.</p>
+        <p class="body reveal">Thank you for being you, always. <svg class="ic" style="fill:none;stroke:currentColor;width:.7em;height:.7em"><use href="#i-heart-o"/></svg></p>
+        <p class="body reveal">Të dua shumë, zemra ime.</p>
+        <p class="sign reveal">— YGX77 <svg class="ic"><use href="#i-heart-o"/></svg></p>
+      </article>
+
+      <!-- SONG: change the title text and SONG_LINK in the script -->
+      <aside class="card player" id="song">
+        <div class="row1">
+          <svg class="ic note"><use href="#i-note"/></svg>
+          <div class="meta">
+            <strong>Our Song</strong>
+            <span>The Neighbourhood – Sweater Weather</span>
+          </div>
+          <button class="like" id="like" aria-label="Like this song"><svg class="ic"><use href="#i-heart-o"/></svg></button>
+        </div>
+        <div class="row2">
+          <button class="play" id="play" aria-label="Play"><svg class="ic" id="playIcon"><use href="#i-play"/></svg></button>
+          <span class="time" id="time">0:00 / 4:00</span>
+          <input type="range" id="seek" min="0" max="100" step="0.1" value="0" aria-label="Seek">
+          <button class="mute" id="mute" aria-label="Mute"><svg class="ic"><use href="#i-vol"/></svg></button>
+          <input type="range" id="vol" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+        </div>
+        <audio id="audio" preload="none" src="songs/sweater-weather.mp3"></audio>
+      </aside>
+    </div>
+
+    <!-- PHOTO 2 -->
+    <figure class="polaroid right">
+      <div class="frame">
+        <img src="photos/amela2.png" alt="Amela with glasses and a mustache sticker"
+             onerror="this.closest('.polaroid').classList.add('missing'); this.parentNode.append('Add photos/amela2.png')">
+      </div>
+      <svg class="hrt"><use href="#i-heart-o"/></svg>
+    </figure>
+  </div>
+
+  <p class="forever">Forever and always... ♡</p>
+</main>
+
+<section id="foryou">
+  <div class="card">
+    <h2>One last question</h2>
+    <p class="q">Do you still like me?</p>
+    <div class="btns" id="btns">
+      <button class="btn yes" id="yes">Yes ♡</button>
+      <button class="btn no" id="no">No</button>
+    </div>
+    <p class="answer" id="answer">Good. Me too. Të dua. ♡</p>
+  </div>
+</section>
+
+<script>
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var SONG_LINK = "https://www.youtube.com/results?search_query=the+neighbourhood+sweater+weather";
+
+  /* stars */
+  var starBox = document.getElementById("stars");
+  for (var i = 0; i < 70; i++) {
+    var s = document.createElement("span");
+    s.className = "star";
+    var size = 1 + Math.random() * 2;
+    s.style.cssText = "left:" + Math.random() * 100 + "%;top:" + Math.random() * 70 + "%;width:" + size + "px;height:" + size + "px;opacity:" + (0.4 + Math.random() * 0.6) + ";animation-delay:" + Math.random() * 3 + "s;animation-duration:" + (2 + Math.random() * 3) + "s";
+    starBox.appendChild(s);
+  }
+
+  /* petals and hearts */
+  var fx = document.getElementById("fx");
+  function petal() {
+    if (reduce) return;
+    var p = document.createElement("span");
+    p.className = "petal";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.setProperty("--dx", (Math.random() * 160 - 80) + "px");
+    p.style.animationDuration = 9 + Math.random() * 8 + "s";
+    p.style.transform = "scale(" + (0.7 + Math.random() * 0.9) + ")";
+    fx.appendChild(p);
+    setTimeout(function () { p.remove(); }, 18000);
+  }
+  setInterval(petal, 1500);
+  for (var k = 0; k < 6; k++) setTimeout(petal, k * 400);
+
+  function hearts(n) {
+    if (reduce) return;
+    for (var j = 0; j < n; j++) {
+      (function (delay) {
+        setTimeout(function () {
+          var h = document.createElement("span");
+          h.className = "rise";
+          h.textContent = "♡";
+          h.style.left = Math.random() * 100 + "vw";
+          h.style.fontSize = 16 + Math.random() * 22 + "px";
+          h.style.animationDuration = 4 + Math.random() * 4 + "s";
+          fx.appendChild(h);
+          setTimeout(function () { h.remove(); }, 9000);
+        }, delay);
+      })(j * 90);
+    }
+  }
+
+  /* letter reveal */
+  var parts = document.querySelectorAll(".reveal");
+  parts.forEach(function (el, i) {
+    setTimeout(function () { el.classList.add("in"); }, reduce ? 0 : 500 + i * 1100);
+  });
+
+  /* nav highlight */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".pill a"));
+  links.forEach(function (a) {
+    a.addEventListener("click", function () {
+      links.forEach(function (l) { l.classList.toggle("on", l === a); });
+    });
+  });
+
+  /* song player */
+  var audio = document.getElementById("audio");
+  var playBtn = document.getElementById("play");
+  var playUse = document.querySelector("#playIcon use");
+  var seek = document.getElementById("seek");
+  var vol = document.getElementById("vol");
+  var mute = document.getElementById("mute");
+  var timeEl = document.getElementById("time");
+  var like = document.getElementById("like");
+
+  function fmt(t) {
+    if (!isFinite(t)) return "0:00";
+    return Math.floor(t / 60) + ":" + String(Math.floor(t % 60)).padStart(2, "0");
+  }
+  function paint(el) {
+    var max = parseFloat(el.max) || 1;
+    el.style.setProperty("--p", (el.value / max * 100) + "%");
+  }
+  function fallback() { window.open(SONG_LINK, "_blank", "noopener"); }
+
+  audio.volume = parseFloat(vol.value);
+  paint(vol); paint(seek);
+
+  playBtn.addEventListener("click", function () {
+    if (audio.paused) {
+      var res = audio.play();
+      if (res && res.catch) res.catch(fallback);
+    } else {
+      audio.pause();
+    }
+  });
+  audio.addEventListener("play", function () { playUse.setAttribute("href", "#i-pause"); });
+  audio.addEventListener("pause", function () { playUse.setAttribute("href", "#i-play"); });
+  audio.addEventListener("ended", function () { seek.value = 0; paint(seek); timeEl.textContent = "0:00 / " + fmt(audio.duration); });
+  audio.addEventListener("timeupdate", function () {
+    if (!audio.duration) return;
+    seek.value = audio.currentTime / audio.duration * 100;
+    paint(seek);
+    timeEl.textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration);
+  });
+  audio.addEventListener("loadedmetadata", function () {
+    timeEl.textContent = "0:00 / " + fmt(audio.duration);
+  });
+  seek.addEventListener("input", function () {
+    paint(seek);
+    if (audio.duration) audio.currentTime = seek.value / 100 * audio.duration;
+  });
+  vol.addEventListener("input", function () {
+    audio.volume = parseFloat(vol.value);
+    audio.muted = false;
+    mute.classList.remove("off");
+    paint(vol);
+  });
+  mute.addEventListener("click", function () {
+    audio.muted = !audio.muted;
+    mute.classList.toggle("off", audio.muted);
+  });
+  like.addEventListener("click", function () {
+    like.classList.toggle("liked");
+    if (like.classList.contains("liked")) hearts(10);
+  });
+
+  /* yes / no */
+  var no = document.getElementById("no");
+  var yes = document.getElementById("yes");
+  var box = document.getElementById("btns");
+  function dodge() {
+    var maxX = box.clientWidth - no.offsetWidth;
+    var maxY = box.clientHeight - no.offsetHeight;
+    no.style.left = Math.max(0, Math.random() * maxX) + "px";
+    no.style.top = Math.max(0, Math.random() * maxY) + "px";
+  }
+  no.addEventListener("mouseenter", dodge);
+  no.addEventListener("touchstart", function (e) { e.preventDefault(); dodge(); }, { passive: false });
+  no.addEventListener("click", dodge);
+  yes.addEventListener("click", function () {
+    document.getElementById("answer").classList.add("show");
+    no.style.display = "none";
+    yes.style.display = "none";
+    hearts(40);
+  });
+</script>
+</body>
+</html>
